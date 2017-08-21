@@ -20,15 +20,17 @@ class m:
         button2.grid(row=10, column=2);
         return file
     def saveas():
-        save = tkinter.filedialog.asksaveasfilename();
+        save = tkinter.filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")));
         t = text.get("1.0", "end-1c");
         f = open(save,'w');
         f.write(t);
         f.close();
+        button2=Button(root, text="Save", command=m.saveas);
+        button2.grid(row=10, column=2);
     def new():
-        save = tkinter.filedialog.asksaveasfilename();
+        save = tkinter.filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("text files","*.txt"),("all files","*.*")));
         t = text.get("1.0", "end-1c");
-        f = open(file,'w');
+        f = open(file,'w+');
         f.write(t);
         f.close();
     def save():
@@ -48,4 +50,6 @@ button1=Button(root, text="Open", command=m.fileopen);
 button1.grid(row=10, column=1);
 button2=Button(root, text="Save", command=m.save, state=DISABLED);
 button2.grid(row=10, column=2);
+button3=Button(root, text="New", command=m.new);
+button3.grid(row=10, column=3);
 root.mainloop();
